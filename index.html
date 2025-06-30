@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Visor de Proyectos</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    html, body {
+      margin: 25px 10px 10px 10px;
+      padding: 0;
+      height: 100%;
+      font-family: "Adobe Source Sans Pro", sans-serif;
+    }
+    #map {
+      width: 100%;
+      height: 98%;
+    }
+    
+    .map-title {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #235941 ;
+      width: 85%;
+      padding: 10px 100px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      z-index: 1000;
+      opacity: 0.9;
+    }
+
+    .filtros-container {
+      position: absolute;
+      top: 15px;
+      left: 22%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+    .filtros-container select,
+    .filtros-container button {
+      background-color: white;
+      color: #235941;
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    #toggleEspecialidad.active {
+      background-color: #c1cbaa;
+      color: black;
+    }
+
+    #limpiarFiltros {
+      background-color: #f09a81;
+      color: white;
+      padding: 8px 14px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+    }
+
+    #limpiarFiltros.active {
+      background-color: floralwhite; 
+      color: black;
+    }
+
+    .leyenda {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 28%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+    .leyenda div {
+      margin: 4px 0;
+      font-size: 12px;
+    }
+    .leyenda span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 6px;
+      border-radius: 3px;
+    }
+    .leaflet-control-layers {
+      top: 10px;
+      right: 10%;
+      background-color: white;      
+      padding: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .logo-institucional {
+      position: absolute;
+      bottom: 15px;
+      left: 25px;
+      height: 80px;
+      z-index: 1000;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .logo-institucional:hover {
+      opacity: 1;
+    }
+
+  </style>
+
+</head>
+<div class="map-title">Visor de proyectos de investigación</div>
+<body>
+  <div id="map">
+      <div class="filtros-container">
+      <select id="filtroEstado">
+        <option value="">Estado</option>
+        <option value="En Curso">En curso</option>
+        <option value="Finalizado">Finalizado</option>
+      </select>
+      <button id="toggleEspecialidad">Especialidad</button>
+      <button id="limpiarFiltros">Limpiar</button>
+    </div>
+
+    <div class="leyenda" id="leyendaEspecialidad">
+      <b>Especialidades:</b>
+      <div><span style="background:#ffff99"></span>Antropología</div>
+      <div><span style="background:#a6cee3"></span>Arqueología</div>
+      <div><span style="background:#1f78b4"></span>Comunicación social</div>
+      <div><span style="background:#b2df8a"></span>Educación</div>
+      <div><span style="background:#33a02c"></span>Filosofía</div>
+      <div><span style="background:#fb9a99"></span>Género</div>
+      <div><span style="background:#e31a1c"></span>Historia</div>
+      <div><span style="background:#fdbf6f"></span>Humanidades Digitales</div>
+      <div><span style="background:#ff7f00"></span>Literatura</div>
+      <div><span style="background:#cab2d6"></span>Sociología</div>
+      <div><span style="background:#6a3d9a"></span>Teatro</div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script src="mapa.js"></script>
+
+<img src="logo.jpg" alt="Logo institucional" class="logo-institucional">
+</body>
+</html>
