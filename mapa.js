@@ -65,7 +65,7 @@ var promesaPuntos = fetch('puntos.geojson')
             pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {
                     icon: L.divIcon({
-                        html: '<ion-icon name="location" style="font-size:24px;color:#474c52;"></ion-icon>',
+                        html: '<ion-icon name="location" style="font-size:24px;color:#346888;"></ion-icon>',
                         className: '',
                         iconSize: [30, 30]
                     })
@@ -135,7 +135,7 @@ function actualizarPuntos() {
         }
 
         if (mostrar) {
-            var color = especialidadActiva ? getColorEspecialidad(p.Espec_cod) : "#474c52";
+            var color = especialidadActiva ? getColorEspecialidad(p.Espec_cod) : "#346888";
             obj.layer.setIcon(L.divIcon({
                 html: `<ion-icon name="location" style="font-size:24px;color:${color};"></ion-icon>`,
                 className: '',
